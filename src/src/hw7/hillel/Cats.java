@@ -15,7 +15,7 @@ public class Cats extends Animals {
             System.out.println("Cat run:" + runnig);
         }
     }
-
+//
 
     public Cats(String name) {
         super(name);

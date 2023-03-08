@@ -10,7 +10,7 @@ public class Animals {
     public void swim(int swiming) {
         System.out.println("Animals swim:" + swiming);
     }
-
+//
     public void run(int runnig) {
         System.out.println("Animals run:" + runnig);
     }

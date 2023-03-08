@@ -20,7 +20,7 @@ public class Dogs extends Animals {
             System.out.println("Dog run:" + runnig);
         }
     }
-
+//
     public Dogs(String name) {
         super(name);
     }
