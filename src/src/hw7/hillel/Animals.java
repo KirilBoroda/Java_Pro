@@ -36,4 +36,5 @@ public class Animals {
     public int getSwiming() {
         return swiming;
     }
+
 }

@@ -11,7 +11,9 @@ public class Cats extends Animals {
         if (runnig > 200) {
             System.out.println("Cat cant run more than 200 m");
         }
-        System.out.println("Animals run:" + runnig);
+        else {
+            System.out.println("Cat run:" + runnig);
+        }
     }
 
 
