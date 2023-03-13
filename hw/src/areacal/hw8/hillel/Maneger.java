@@ -8,7 +8,7 @@ public class Maneger {
         figures[2] = new Square(5.0);
 
         double totalArea = 0.0;
-        System.out.println(figures[1].getAreaOfFigures());
+
         {
             for (int i = 0; i < figures.length; i++) {
                 totalArea += figures[i].getAreaOfFigures();
