@@ -1,6 +1,7 @@
 package hw7.hillel;
 
 public class Dogs extends Animals {
+    private static int DogsCount;
     @Override
     public void swim(int swiming) {
         if (swiming > 10) {
@@ -20,8 +21,11 @@ public class Dogs extends Animals {
             System.out.println(getName()+ " run:" + runnig);
         }
     }
-
+    public static int getDogsCount() {
+        return DogsCount;
+    }
     public Dogs(String name) {
         super(name);
+        DogsCount++;
     }
 }
