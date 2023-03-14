@@ -22,6 +22,7 @@ public class AnimalsManager {
         dog2.swim(25);
         System.out.println("-------------------------------");
 
-        System.out.println("How many animals = " + Animals.getAnimalsCount());
+        System.out.println("How many cats = " + Cats.getCatsCount());
+        System.out.println("How many dogs = " + Dogs.getDogsCount());
     }
 }
