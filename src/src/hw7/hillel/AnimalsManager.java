@@ -1,28 +1,28 @@
-package hw7.hillel;
+package hw7.animal;
 
-public class AnimalsManager {
+public class AnimalManager {
     public static void main(String[] args) {
-        Cats cat1 = new Cats("Barsik");
+        Cat cat1 = new Cat("Barsik");
         cat1.swim(10);
         cat1.run(300);
         System.out.println("-------------------------------");
 
-        Cats cat2 = new Cats("Myrzik");
+        Cat cat2 = new Cat("Myrzik");
         cat2.swim(1);
         cat2.run(200);
         System.out.println("-------------------------------");
 
-        Dogs dog1 = new Dogs("Elza");
+        Dog dog1 = new Dog("Elza");
         dog1.run(400);
         dog1.swim(10);
         System.out.println("-------------------------------");
 
-        Dogs dog2 = new Dogs("Marry");
+        Dog dog2 = new Dog("Marry");
         dog2.run(600);
         dog2.swim(25);
         System.out.println("-------------------------------");
 
-        System.out.println("How many cats = " + Cats.getCatsCount());
-        System.out.println("How many dogs = " + Dogs.getDogsCount());
+        System.out.println("How many cats = " + Cat.getCatsCount());
+        System.out.println("How many dogs = " + Dog.getDogsCount());
     }
 }
