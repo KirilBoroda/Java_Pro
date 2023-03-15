@@ -1,29 +1,19 @@
-package hw7.hillel;
+package hw7.animal;
 
-public class Animals {
-    private static int AnimalsCount;
+public class Animal {
+    private static int AnimalCount;
     private String name;
     private int runnig;
     private int swiming;
 
-
-
-    public void swim(int swiming) {
-        System.out.println("Animals swim:" + swiming);
-    }
-
-    public void run(int runnig) {
-        System.out.println("Animals run:" + runnig);
-    }
-
-    public Animals(String name) {
+    public Animal(String name) {
 
         this.name = name;
-        AnimalsCount++;
+        AnimalCount++;
     }
 
-    public static int getAnimalsCount() {
-        return AnimalsCount;
+    public static int getAnimalCount() {
+        return AnimalCount;
     }
 
     public String getName() {
@@ -38,4 +28,11 @@ public class Animals {
         return swiming;
     }
 
+    public void swim(int swiming) {
+        System.out.println("Animals swim:" + swiming);
+    }
+
+    public void run(int runnig) {
+        System.out.println("Animals run:" + runnig);
+    }
 }
