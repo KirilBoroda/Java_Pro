@@ -1,4 +1,4 @@
-package participant.with.limits.hw8.hillel;
+package src.participant.with.limits.hw8.hillel;
 
 public class Human extends Participant {
     public Human(String name) {

@@ -1,4 +1,4 @@
-package participant.with.limits.hw8.hillel;
+package src.participant.with.limits.hw8.hillel;
 
 public abstract class Participant {
     protected String name;

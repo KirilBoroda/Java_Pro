@@ -1,6 +1,6 @@
-package areacal.hw8.hillel;
+package src.areacal.hw8.hillel;
 
-public class Circle implements Area {
+public class Circle implements Shape {
     private double radius;
 
     public Circle(double radius) {
@@ -8,7 +8,7 @@ public class Circle implements Area {
     }
 
     @Override
-    public double getAreaOfFigures() {
+    public double getArea() {
         return Math.PI * radius * radius;
     }
 }

@@ -1,6 +1,6 @@
-package areacal.hw8.hillel;
+package src.areacal.hw8.hillel;
 
-public class Triangle implements Area {
+public class Triangle implements Shape {
     private double base;
     private double h;
 
@@ -10,7 +10,7 @@ public class Triangle implements Area {
     }
 
     @Override
-    public double getAreaOfFigures() {
+    public double getArea() {
         return 0.5 * base * h;
     }
 
