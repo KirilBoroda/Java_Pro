@@ -16,7 +16,7 @@ public class Main {
                 new Wall(2)
         };
 
-        Competition competition = new Competition(participants,obstacles);
+        Competition competition = new Competition(participants, obstacles);
         competition.start();
     }
 }
