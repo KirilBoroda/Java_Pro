@@ -2,18 +2,24 @@ package hw9.hillel;
 
 public class ArrayValueCalculator {
 
-    public static int doCalc(String[][] arr) throws ArraySizeException, ArrayDataException {
-        if (arr.length != 4 || arr[0].length != 4) {
+    public static int doCalc(String[][] arr)  {
+        if (arr.length != 4) {
             throw new ArraySizeException("Array size must be 4x4.");
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].length != 4) {
+                throw new ArraySizeException("Array size must be 4x4.");
+            }
         }
 
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
+            for (int j = 0; j < arr[i].length; j++) {
                 try {
                     sum += Integer.parseInt(arr[i][j]);
                 } catch (NumberFormatException e) {
                     throw new ArrayDataException("Invalid data at row " + i + ", column " + j + ".");
+
                 }
             }
         }
@@ -28,13 +34,8 @@ public class ArrayValueCalculator {
                 {"13", "14", "15", "16"}
         };
 
-        try {
-            int result = doCalc(arr);
-            System.out.println("Result: " + result);
-        } catch (ArraySizeException e) {
-            System.err.println("Invalid array size: " + e.getMessage());
-        } catch (ArrayDataException e) {
-            System.err.println("Invalid array data: " + e.getMessage());
-        }
+        int result = 0;
+        result = doCalc(arr);
+        System.out.println("Result: " + result);
     }
 }
