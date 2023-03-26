@@ -13,7 +13,6 @@ public class AlgoInsert {
         for(int i=1;i<ints.length;i++){
             int current = ints[i];
             int j =i;
-           // System.out.println(Arrays.toString(ints));
             while (j>0 && ints[j-1]>current){
                 ints[j] = ints[j-1];
                 j--;
