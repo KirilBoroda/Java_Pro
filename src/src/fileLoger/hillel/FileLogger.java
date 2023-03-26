@@ -13,13 +13,13 @@ public class FileLogger {
         this.config = config;
     }
 
-    public void debug(String message) throws FileMaxSizeReachedException {
+    public void debug(String message)  {
         if (config.getLevel().compareTo(LoggingLevel.DEBUG) >= 0) {
             log("DEBUG", message);
         }
     }
 
-    public void info(String message) throws FileMaxSizeReachedException {
+    public void info(String message)  {
         if (config.getLevel().compareTo(LoggingLevel.INFO) >= 0) {
             log("INFO", message);
         }
