@@ -26,7 +26,7 @@ public class FileLogger {
     }
 
 
-    private void log(String level, String message) throws FileMaxSizeReachedException {
+    private void log(String level, String message)  {
         File file = new File(config.getFile());
         long fileSize = file.length();
         long maxFileSize = config.getMaxFileSize();
