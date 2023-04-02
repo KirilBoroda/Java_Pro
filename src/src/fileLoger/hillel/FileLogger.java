@@ -18,6 +18,7 @@ public class FileLogger {
             log("DEBUG", message);
         }
     }
+
     public boolean isDebugEnabled() {
         return config.getLevel().compareTo(LoggingLevel.DEBUG) >= 0;
     }
@@ -27,6 +28,7 @@ public class FileLogger {
             log("INFO", message);
         }
     }
+
     public boolean isInfoEnabled() {
         return config.getLevel().compareTo(LoggingLevel.INFO) >= 0;
     }
@@ -53,7 +55,6 @@ public class FileLogger {
         String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd.HH.mm.ss"));// In Windows cant use symbols such as : | _-
         String format = ".txt";
         return fileName1 + date + format;
-
     }
 
     private String getCurrentTime() {
