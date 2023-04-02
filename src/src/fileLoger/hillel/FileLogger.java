@@ -15,7 +15,7 @@ public class FileLogger {
 
     public void debug(String message) {
         if (isDebugEnabled()) {
-            log("DEBUG", message);
+            log(LoggingLevel.DEBUG, message);
         }
     }
 
@@ -25,7 +25,7 @@ public class FileLogger {
 
     public void info(String message) {
         if (isInfoEnabled()) {
-            log("INFO", message);
+            log(LoggingLevel.INFO, message);
         }
     }
 
@@ -33,7 +33,7 @@ public class FileLogger {
         return config.getLevel().compareTo(LoggingLevel.INFO) >= 0;
     }
 
-    private void log(String level, String message) {
+    private void log(LoggingLevel level, String message) {
         File file = new File(config.getFile());
         long fileSize = file.length();
         long maxFileSize = config.getMaxFileSize();
