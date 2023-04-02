@@ -7,6 +7,15 @@ class FileLoggerConfiguration {
     private String format;
 
     public FileLoggerConfiguration(String file, LoggingLevel level, long maxFileSize, String format) {
+        if (file == null) {
+            throw new IllegalArgumentException("file cannot be null");
+        }
+        if (level == null) {
+            throw new IllegalArgumentException("level cannot be null");
+        }
+        if (maxFileSize <= 0) {
+            throw new IllegalArgumentException("maxFileSize must be greater than 0");
+        }
         this.file = file;
         this.level = level;
         this.maxFileSize = maxFileSize;
