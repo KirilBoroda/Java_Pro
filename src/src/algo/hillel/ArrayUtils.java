@@ -3,9 +3,9 @@ package algo.hillel;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class ArrayUtils {
-    public final static  int[]  doArray(int size){
-        int[] ints =new int[size];
-        for (int i=0;i<ints.length;i++){
+    public final static int[] doArray(int size) {
+        int[] ints = new int[size];
+        for (int i = 0; i < ints.length; i++) {
             ints[i] = ThreadLocalRandom.current().nextInt(size);
         }
         return ints;
