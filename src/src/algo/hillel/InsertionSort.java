@@ -18,7 +18,6 @@ public class InsertionSort {
                 j--;
             }
             ints[j] = current;
-
         }
         return ints;
     }

@@ -19,8 +19,7 @@ public class BubbleSort {
                     ints[j+1]=buffer;
                 }
             }
-        }
-        return ints;
+        }return ints;
     }
 
 }
