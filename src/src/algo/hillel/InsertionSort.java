@@ -2,9 +2,9 @@ package algo.hillel;
 
 import java.util.Arrays;
 
-public class AlgoInsert {
+public class InsertionSort {
     public static void main(String[] args) {
-        var ints =doArray(100);
+        var ints = ArrayUtils.doArray(100);
         System.out.println(Arrays.toString(ints));
         var sort = insertSort(ints);
         System.out.println(Arrays.toString(ints));
@@ -12,8 +12,7 @@ public class AlgoInsert {
     private  static  int[] insertSort(int[] ints){
         for(int i=1;i<ints.length;i++){
             int current = ints[i];
-            int j =i;
-           // System.out.println(Arrays.toString(ints));
+            int j =i-1;
             while (j>0 && ints[j-1]>current){
                 ints[j] = ints[j-1];
                 j--;
@@ -23,13 +22,5 @@ public class AlgoInsert {
         }
         return ints;
     }
-    private static int[] doArray(int size){
-        int[] ints =new int[size];
-        for (int i=0;i<ints.length;i++){
 
-            ints[i] = (int)(Math.random()*100);
-
-        }
-        return ints;
-    }
 }
