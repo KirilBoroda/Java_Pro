@@ -21,11 +21,12 @@ public class FindUnique {
         var test = findUnique(listNum);
         System.out.println(test);
     }
-    public static List<Integer> findUnique(List<Integer> listNum){
+
+    public static List<Integer> findUnique(List<Integer> listNum) {
         Set<Integer> uniqueSet = new HashSet<>();
-        List<Integer> uniqueList =new ArrayList<>();
-        for (Integer element:listNum){
-            if(!uniqueSet.contains(element)){
+        List<Integer> uniqueList = new ArrayList<>();
+        for (Integer element : listNum) {
+            if (!uniqueSet.contains(element)) {
                 uniqueSet.add(element);
                 uniqueList.add(element);
             }

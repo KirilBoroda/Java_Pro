@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class CalcOccurance {
     public static void main(String[] args) {
-        List<String> words =new ArrayList<>();
+        List<String> words = new ArrayList<>();
         words.add("Alua");
         words.add("Alua");
         words.add("Kavio");
@@ -19,7 +19,8 @@ public class CalcOccurance {
 
 
     }
-    public static  void calcOccurance(List<String> words) {
+
+    public static void calcOccurance(List<String> words) {
         Map<String, Integer> occuranceMap = new HashMap<>();
         for (String word : words) {
             if (occuranceMap.containsKey(word)) {

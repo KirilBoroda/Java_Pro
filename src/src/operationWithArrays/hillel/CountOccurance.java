@@ -16,7 +16,7 @@ public class CountOccurance {
         word.add("pencil");
         word.add("apple");
         word.add("book");
-var test =countMeter(word,target);
+        var test = countMeter(word, target);
         System.out.println(test);
     }
 
