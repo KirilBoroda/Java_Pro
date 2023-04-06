@@ -22,8 +22,6 @@ public class FileNavigator {
         } else {
             throw new RuntimeException("Different path: " + path +" "+file.getPath());
         }
-
-
     }
 
     public List<FileData> find(String path) {
