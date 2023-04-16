@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Box gg= new Box();
+        Box gg = new Box();
         List<Fruit> gf = new ArrayList<>();
 
         gf.add(new Apple());
