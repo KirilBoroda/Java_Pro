@@ -26,7 +26,6 @@ public class CountOccurance {
             if (elements.equals(target)) {
                 count++;
             }
-
         }
         return count;
     }
