@@ -15,7 +15,11 @@ public class FindOccurance {
     public static Map<String, Integer> findOccurrence(List<String> wordList) {
         Map<String, Integer> occurrenceMap = new HashMap<>();
         for (String word : wordList) {
-            occurrenceMap.put(word, occurrenceMap.getOrDefault(word, 0) + 1);
+            if (occurrenceMap.containsKey(word)) {
+                occurrenceMap.put(word, occurrenceMap.get(word) + 1);
+            } else {
+                occurrenceMap.put(word, 1);
+            }
         }
         return occurrenceMap;
     }
