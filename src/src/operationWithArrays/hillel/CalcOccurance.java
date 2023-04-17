@@ -15,22 +15,26 @@ public class CalcOccurance {
         words.add("Kavio");
         words.add("Alua");
         words.add("Alua");
-        calcOccurance(words);
 
-
-    }
-
-    public static void calcOccurance(List<String> words) {
-        Map<String, Integer> occuranceMap = new HashMap<>();
-        for (String word : words) {
-            if (occuranceMap.containsKey(word)) {
-                occuranceMap.put(word, occuranceMap.get(word) + 1);
-            } else {
-                occuranceMap.put(word, 1);
-            }
-        }
-        for (Map.Entry<String, Integer> entry : occuranceMap.entrySet()) {
+        Map<String, Integer> occurrenceMap = calcOccurrence(words);
+        for (Map.Entry<String, Integer> entry : occurrenceMap.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
     }
+
+    public static Map<String, Integer> calcOccurrence(List<String> words) {
+        Map<String, Integer> occurrenceMap = new HashMap<>();
+        for (String word : words) {
+            if (occurrenceMap.containsKey(word)) {
+                occurrenceMap.put(word, occurrenceMap.get(word) + 1);
+            } else {
+                occurrenceMap.put(word, 1);
+            }
+        }
+        return occurrenceMap;
+    }
 }
+
+
+
+

@@ -6,8 +6,8 @@ public class Main {
         book.addRecord(new Record("Ivan", "+13412312312"));
         book.addRecord(new Record("Ivan", "+13412312312"));
         book.addRecord(new Record("Ivan3", "+13412312312"));
-        book.find("Ivan2");
-        System.out.println(book);
+
+        System.out.println(book.find("Ivan3"));
         System.out.println(book.findAll("Ivan"));
     }
 

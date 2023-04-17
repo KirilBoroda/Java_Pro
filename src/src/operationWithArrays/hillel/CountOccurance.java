@@ -16,11 +16,11 @@ public class CountOccurance {
         word.add("pencil");
         word.add("apple");
         word.add("book");
-        var test = countMeter(word, target);
+        var test = countOccurance(word, target);
         System.out.println(test);
     }
 
-    public static int countMeter(List<String> word, String target) {
+    public static int countOccurance(List<String> word, String target) {
         int count = 0;
         for (String elements : word) {
             if (elements.equals(target)) {
@@ -30,4 +30,5 @@ public class CountOccurance {
         }
         return count;
     }
+
 }

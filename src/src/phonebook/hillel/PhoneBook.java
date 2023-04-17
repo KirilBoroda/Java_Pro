@@ -2,10 +2,10 @@ package phonebook.hillel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SplittableRandom;
+
 
 public class PhoneBook {
-    private static List<Record> records;
+    private List<Record> records;
 
     public PhoneBook() {
         this.records = new ArrayList<>();
@@ -15,7 +15,7 @@ public class PhoneBook {
         records.add(record);
     }
 
-    public static Record find(String name) {
+    public Record find(String name) {
         for (Record record : records) {
             if (record.getName().equals(name)) {
                 return record;
@@ -24,7 +24,7 @@ public class PhoneBook {
         return null;
     }
 
-    public static List<Record> findAll(String name) {
+    public List<Record> findAll(String name) {
         List<Record> findRecord = new ArrayList<>();
         for (Record rec : records) {
             if (rec.getName().equals(name)) {
