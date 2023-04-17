@@ -22,7 +22,7 @@ public class FindUnique {
         System.out.println(test);
     }
 
-    public static Set<Integer> findUnique(List<Integer> listNum) {
-        return new HashSet<>(listNum);
+    public static Set<Integer> findUnique(List<Integer> numbers) {
+        return new HashSet<>(numbers);
     }
 }
