@@ -7,9 +7,7 @@ public class FindOccurance {
         List<String> wordList = Arrays.asList("bird", "cat", "dog", "bird", "fox", "cat", "cat", "dog", "bird");
         List<WordOccurrence> occurrenceList = findOccurrence(wordList);
         System.out.println("Word occurrence in the list:");
-        for (WordOccurrence occurrence : occurrenceList) {
-            System.out.println(occurrence.getName() + ": " + occurrence.getOccurrence());
-        }
+        System.out.println(occurrenceList);
     }
 
     public static List<WordOccurrence> findOccurrence(List<String> wordList) {
