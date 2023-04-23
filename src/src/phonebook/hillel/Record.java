@@ -2,19 +2,19 @@ package phonebook.hillel;
 
 public class Record {
     private String name;
-    private String numberPhone;
+    private String phone;
 
-    public Record(String name, String numberPhone) {
+    public Record(String name, String phone) {
         this.name = name;
-        this.numberPhone = numberPhone;
+        this.phone = phone;
     }
 
-    public String getNumberPhone() {
-        return numberPhone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setNumberPhone(String numberPhone) {
-        this.numberPhone = numberPhone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getName() {
@@ -33,13 +33,13 @@ public class Record {
         Record record = (Record) o;
 
         if (!name.equals(record.name)) return false;
-        return numberPhone.equals(record.numberPhone);
+        return phone.equals(record.phone);
     }
 
     @Override
     public int hashCode() {
         int result = name.hashCode();
-        result = 31 * result + numberPhone.hashCode();
+        result = 31 * result + phone.hashCode();
         return result;
     }
 
@@ -47,7 +47,7 @@ public class Record {
     public String toString() {
         return "Record{" +
                 "name='" + name + '\'' +
-                ", numberPhone='" + numberPhone + '\'' +
+                ", numberPhone='" + phone + '\'' +
                 '}';
     }
 }
