@@ -1,5 +1,7 @@
 package filemanager.hillel;
 
+import java.util.Objects;
+
 public class FileData {
 
     private String name;
@@ -22,6 +24,26 @@ public class FileData {
 
     public String getPath() {
         return path;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FileData fileData = (FileData) o;
+
+        if (size != fileData.size) return false;
+        if (!Objects.equals(name, fileData.name)) return false;
+        return Objects.equals(path, fileData.path);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + size;
+        result = 31 * result + (path != null ? path.hashCode() : 0);
+        return result;
     }
 
     @Override
