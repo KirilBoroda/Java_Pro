@@ -47,7 +47,7 @@ public class Record {
     public String toString() {
         return "Record{" +
                 "name='" + name + '\'' +
-                ", numberPhone='" + phone + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 }
