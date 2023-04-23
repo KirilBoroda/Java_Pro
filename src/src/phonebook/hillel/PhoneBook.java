@@ -25,19 +25,14 @@ public class PhoneBook {
     }
 
     public List<Record> findAll(String name) {
-        List<Record> findRecord = new ArrayList<>();
+        List<Record> matchedRecords = new ArrayList<>();
         for (Record rec : records) {
             if (rec.getName().equals(name)) {
-                findRecord.add(rec);
+                matchedRecords.add(rec);
             }
         }
-        if (findRecord.isEmpty()) {
-            return null;
-        } else {
-            return findRecord;
-        }
+        return matchedRecords.isEmpty() ? null : matchedRecords;
     }
-
 
     @Override
     public String toString() {

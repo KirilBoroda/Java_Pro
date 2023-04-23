@@ -46,6 +46,24 @@ class WordOccurrence {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        WordOccurrence that = (WordOccurrence) o;
+
+        if (occurrence != that.occurrence) return false;
+        return name.equals(that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + occurrence;
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "WordOccurrence{" +
                 "name='" + name + '\'' +

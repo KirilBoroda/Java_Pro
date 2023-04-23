@@ -11,11 +11,11 @@ public class ArrayToList {
 
     }
 
-    public static <T> List<T> toList(T[] ints) {
-        List<T> array = new ArrayList<>();
-        for (int i = 0; i < ints.length; i++) {
-            array.add(ints[i]);
+    public static <T> List<T> toList(T[] values) {
+        List<T> result = new ArrayList<>();
+        for (int i = 0; i < values.length; i++) {
+            result.add(values[i]);
         }
-        return array;
+        return result;
     }
 }
