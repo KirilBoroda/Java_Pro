@@ -9,16 +9,17 @@ public class Main {
         List<Product> pr = new ArrayList<>();
 
         pr.add(new Product(1, "Book", 25, false, LocalDate.now()));
-        pr.add(new Product(2, "Movie", 10, true, LocalDate.now()));
+        pr.add(new Product(2, "Movie", 100, true, LocalDate.now()));
         pr.add(new Product(3, "Book", 500, true, LocalDate.now().minusDays(50)));
         pr.add(new Product(4, "Music", 5, false, LocalDate.now().minusMonths(6)));
         pr.add(new Product(5, "Book", 70, false, LocalDate.now().minusDays(10)));
 
         System.out.println(getCheapestBook(pr));
-        System.out.println(groupProd(pr));
+        System.out.println(getProductsGroupedByType(pr));
         System.out.println(calculateTotalPrice(pr));
         System.out.println(getExpensiveBooks(pr));
         System.out.println(getLastThreeAddedProducts(pr));
+        System.out.println(getDiscountedBooks(pr));
     }
 
     public static List<Product> getExpensiveBooks(List<Product> products) {
@@ -27,10 +28,17 @@ public class Main {
                 .collect(Collectors.toList());
     }
 
+    public static List<Product> getDiscountedBooks(List<Product> products) {
+        return products.stream()
+                .filter(product -> product.getType().equals("Book") && product.hasDiscount())
+                .peek(product -> product.setPrice(product.getPrice() * 0.9))
+                .collect(Collectors.toList());
+    }
+
+
     public static List<Product> getLastThreeAddedProducts(List<Product> products) {
         return products.stream()
-                .sorted(Comparator.comparing(Product::getAddedDate).reversed())
-                .limit(3)
+                .skip(Math.max(0, products.size() - 3))
                 .collect(Collectors.toList());
     }
 
@@ -44,17 +52,16 @@ public class Main {
                 .reduce(0, Double::sum);
     }
 
-    public static Map<String, List<Product>> groupProd(List<Product> products) {
-        Map<String, List<Product>> groupedProducts = products.stream()
+    public static Map<String, List<Product>> getProductsGroupedByType(List<Product> products) {
+        return products.stream()
                 .collect(Collectors.groupingBy(Product::getType));
-
-        return groupedProducts;
     }
 
-    public static Product getCheapestBook(List<Product> products) throws Exception {
+
+    public static Product getCheapestBook(List<Product> products) throws RuntimeException {
         return products.stream()
                 .filter(product -> product.getType().equals("Book"))
                 .min(Comparator.comparing(Product::getPrice))
-                .orElseThrow(() -> new Exception("Product dnt found"));
+                .orElseThrow(() -> new RuntimeException("Product not found"));
     }
 }

@@ -1,6 +1,7 @@
 package streamapi.hw.hillel;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Product {
     private int id;
@@ -36,6 +37,57 @@ public class Product {
 
     public LocalDate getAddedDate() {
         return addedDate;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public boolean isDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(boolean discount) {
+        this.discount = discount;
+    }
+
+    public void setAddedDate(LocalDate addedDate) {
+        this.addedDate = addedDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+
+        if (id != product.id) return false;
+        if (Double.compare(product.price, price) != 0) return false;
+        if (discount != product.discount) return false;
+        if (!Objects.equals(type, product.type)) return false;
+        return Objects.equals(addedDate, product.addedDate);
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = id;
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        temp = Double.doubleToLongBits(price);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (discount ? 1 : 0);
+        result = 31 * result + (addedDate != null ? addedDate.hashCode() : 0);
+        return result;
     }
 
     @Override
