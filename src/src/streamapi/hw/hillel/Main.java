@@ -34,7 +34,10 @@ public class Main {
     public static List<Product> getDiscountedBooks(List<Product> products) {
         return products.stream()
                 .filter(product -> product.getType().equals(BOOK) && product.hasDiscount())
-                .peek(product -> product.setPrice(product.getPrice() * DISCOUNT))
+                .map(product -> {
+                    product.setPrice(product.getPrice() * DISCOUNT);
+                    return product;
+                })
                 .collect(Collectors.toList());
     }
 
