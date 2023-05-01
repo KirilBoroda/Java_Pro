@@ -2,6 +2,7 @@ package fruit.hillel;
 
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Box<T extends Fruit> {
@@ -28,17 +29,15 @@ public class Box<T extends Fruit> {
     public float getWeight() {
         float weight = 0.0f;
         for (T fruit : this.fruits) {
-            if (fruit instanceof Apple) {
-                weight += 1.0f;
-            } else if (fruit instanceof Orange) {
-                weight += 1.5f;
-            }
+            weight += fruit.getWeight();
         }
         return weight;
     }
 
-    public boolean compare(Box<?> anotherBox) {
-        return Math.abs(this.getWeight() - anotherBox.getWeight()) < 0.0001;
+    public int compare(Box<T> anotherBox) {
+        float weight1 = this.getWeight();
+        float weight2 = anotherBox.getWeight();
+        return Float.compare(weight1, weight2);
     }
 
     public void merge(Box<T> anotherBox) {

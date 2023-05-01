@@ -13,6 +13,14 @@ public class Main {
         listFruits1.add(new Apple());
         listFruits1.add(new Apple());
         box1.addFruits(listFruits1);
+        Box box3 = new Box();
+        List<Fruit> listFruits3 = new ArrayList<>();
+        listFruits1.add(new Apple());
+        listFruits1.add(new Apple());
+        listFruits1.add(new Apple());
+        listFruits1.add(new Apple());
+        listFruits1.add(new Apple());
+        box3.addFruits(listFruits3);
         Box box2 = new Box();
         List<Fruit> listFruits2 = new ArrayList<>();
         listFruits2.add(new Apple());
@@ -21,6 +29,7 @@ public class Main {
         listFruits2.add(new Apple());
         listFruits2.add(new Apple());
         box2.addFruits(listFruits2);
+        System.out.println(box1.compare(box3));
         System.out.println(box1.getWeight());
         box2.merge(box1);
         System.out.println(box2.getWeight());
