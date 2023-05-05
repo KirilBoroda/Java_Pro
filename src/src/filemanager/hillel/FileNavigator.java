@@ -1,5 +1,6 @@
 package filemanager.hillel;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class FileNavigator {
@@ -20,25 +21,25 @@ public class FileNavigator {
             }
             fileList.add(file);
         } else {
-            throw new RuntimeException("Different path: " + path +" "+file.getPath());
+            throw new RuntimeException("Different path: " + path + " " + file.getPath());
         }
     }
 
-    public List<FileData> find(String path) {
+    public List<FileData> find(String path) throws FileNotFoundException {
         List<FileData> fileList = fileMap.get(path);
         if (fileList == null) {
-            System.out.println("No files found at path " + path);
-            return Collections.emptyList();
+            throw new FileNotFoundException("No files found at path " + path);
         }
         return fileList;
     }
 
-    public List<FileData> filterBySize(String path, int maxSize) {
-        List<FileData> fileList = fileMap.get(path);
+    public List<FileData> filterBySize(int maxSize) {
         List<FileData> filteredList = new ArrayList<>();
-        for (FileData file : fileList) {
-            if (file.getSize() <= maxSize) {
-                filteredList.add(file);
+        for (List<FileData> pathList : fileMap.values()) {
+            for (FileData file : pathList) {
+                if (file.getSize() <= maxSize) {
+                    filteredList.add(file);
+                }
             }
         }
         return filteredList;
@@ -49,17 +50,9 @@ public class FileNavigator {
     }
 
     public List<FileData> sortBySize() {
-        List<FileData> fileList = new ArrayList<>();
-        for (List<FileData> pathList : fileMap.values()) {
-
-            fileList.addAll(pathList);
-        }
-        Collections.sort(fileList, new Comparator<FileData>() {
-
-            public int compare(FileData f1, FileData f2) {
-                return Integer.compare(f1.getSize(), f2.getSize());
-            }
-        });
-        return fileList;
+        List<FileData> files = new ArrayList<>();
+        fileMap.values().forEach(files::addAll);
+        files.sort(Comparator.comparingInt(FileData::getSize));
+        return files;
     }
 }

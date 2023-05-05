@@ -1,7 +1,9 @@
 package filemanager.hillel;
 
+import java.io.FileNotFoundException;
+
 public class Demo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         FileNavigator navigator = new FileNavigator();
 
@@ -13,7 +15,7 @@ public class Demo {
 
         System.out.println(navigator.find("/path/to/files1"));
 
-        System.out.println(navigator.filterBySize("/path/to/files1", 2321));
+        System.out.println(navigator.filterBySize( 23210));
 
     }
 }
