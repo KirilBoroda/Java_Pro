@@ -30,9 +30,7 @@ public class FileData {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         FileData fileData = (FileData) o;
-
         if (size != fileData.size) return false;
         if (!Objects.equals(name, fileData.name)) return false;
         return Objects.equals(path, fileData.path);

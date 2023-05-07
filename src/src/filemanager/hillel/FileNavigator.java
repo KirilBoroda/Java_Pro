@@ -25,15 +25,15 @@ public class FileNavigator {
         }
     }
 
-    public List<FileData> find(String path) throws FileNotFoundException {
+    public List<FileData> find(String path) {
         List<FileData> fileList = fileMap.get(path);
-        if (fileList == null) {
-            throw new FileNotFoundException("No files found at path " + path);
-        }
         return fileList;
     }
 
     public List<FileData> filterBySize(int maxSize) {
+        if (maxSize <= 0) {
+            throw new IllegalArgumentException("maxSize must be greater than zero");
+        }
         List<FileData> filteredList = new ArrayList<>();
         for (List<FileData> pathList : fileMap.values()) {
             for (FileData file : pathList) {
@@ -45,14 +45,18 @@ public class FileNavigator {
         return filteredList;
     }
 
+
     public void remove(String path) {
         fileMap.remove(path);
     }
 
-    public List<FileData> sortBySize() {
-        List<FileData> files = new ArrayList<>();
-        fileMap.values().forEach(files::addAll);
-        files.sort(Comparator.comparingInt(FileData::getSize));
-        return files;
+    public Map<String, List<FileData>> sortBySize() {
+        for (List<FileData> fileList : fileMap.values()) {
+            if (fileList != null) {
+                fileList.sort(Comparator.comparingInt(FileData::getSize));
+            }
+        }
+        return fileMap;
     }
+
 }
