@@ -7,13 +7,13 @@ public class Main {
         ord.add("Oleg");
         ord.add("Andrew");
         ord.add("Rambo");
-        ord.draw();
+        System.out.println(ord.draw());
         ord.deliver();
-        ord.draw();
+        System.out.println(ord.draw());
         ord.deliver(2);
-        ord.draw();
+        System.out.println(ord.draw());
         ord.deliver(4);
-        ord.draw();
+        System.out.println(ord.draw());
     }
 
 

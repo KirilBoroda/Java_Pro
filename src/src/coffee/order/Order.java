@@ -19,6 +19,14 @@ public class Order {
         return customerName;
     }
 
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
