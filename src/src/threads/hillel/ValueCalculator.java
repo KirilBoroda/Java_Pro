@@ -1,15 +1,16 @@
 package threads.hillel;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ValueCalculator {
+
+    private static final Logger LOGGER = Logger.getLogger(ValueCalculator.class.getName());
 
     private double[] arr;
     private int size;
     private int halfSize;
-
 
     public ValueCalculator(int size) {
         this.size = size;
@@ -33,27 +34,8 @@ public class ValueCalculator {
         System.arraycopy(arr, 0, a1, 0, halfSize);
         System.arraycopy(arr, halfSize, a2, 0, halfSize);
 
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < halfSize; i++) {
-                    int index = i;
-                    a1[index] = (a1[index] * Math.sin(0.2f + index / 5) *
-                            Math.cos(0.2f + index / 5) * Math.cos(0.4f + index / 2));
-                }
-            }
-        });
-
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < halfSize; i++) {
-                    int index = i;
-                    a2[index] = (a2[index] * Math.sin(0.2f + (index + halfSize) / 5) *
-                            Math.cos(0.2f + (index + halfSize) / 5) * Math.cos(0.4f + (index + halfSize) / 2));
-                }
-            }
-        });
+        Thread t1 = new Thread(new CalculationTask(a1, 0, halfSize));
+        Thread t2 = new Thread(new CalculationTask(a2, halfSize, halfSize));
 
         t1.start();
         t2.start();
@@ -62,21 +44,37 @@ public class ValueCalculator {
             t1.join();
             t2.join();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
 
         System.arraycopy(a1, 0, arr, 0, halfSize);
         System.arraycopy(a2, 0, arr, halfSize, halfSize);
         long end = System.currentTimeMillis();
-        System.out.println("Time spent: " + (end - start) + "ms");
+        LOGGER.log(Level.INFO, "Time spent: {0}ms", (end - start));
     }
 
-    @Override
-    public String toString() {
-        return "ValueCalculator{" +
-                "arr=" + Arrays.toString(arr) +
-                ", size=" + size +
-                ", halfSize=" + halfSize +
-                '}';
+    private class CalculationTask implements Runnable {
+        private double[] array;
+        private int startIndex;
+        private int size;
+
+        public CalculationTask(double[] array, int startIndex, int size) {
+            this.array = array;
+            this.startIndex = startIndex;
+            this.size = size;
+        }
+
+        @Override
+        public void run() {
+            for (int i = 0; i < size; i++) {
+                int index = startIndex + i;
+                array[i] = (array[i] * Math.sin(0.2f + index / 5) *
+                        Math.cos(0.2f + index / 5) * Math.cos(0.4f + index / 2));
+
+                if (Thread.interrupted()) {
+                    return;
+                }
+            }
+        }
     }
 }
