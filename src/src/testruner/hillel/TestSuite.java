@@ -1,38 +1,38 @@
 package testruner.hillel;
 
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import java.util.logging.Logger;
 
 public class TestSuite {
 
-    @Annotation(priority = 1)
+    private static final Logger logger = Logger.getLogger(TestSuite.class.getName());
+
+    @Test(priority = 1)
     public void testMethod1() {
-        System.out.println("Executing Test Method 1");
+        logger.info("Executing Test Method 1");
     }
 
-    @Annotation(priority = 3)
+    @Test(priority = 3)
     public void testMethod2() {
-        System.out.println("Executing Test Method 2");
+        logger.info("Executing Test Method 2");
     }
 
-    @Annotation(priority = 2)
+    @Test(priority = 2)
     public void testMethod3() {
-        System.out.println("Executing Test Method 3");
+        logger.info("Executing Test Method 3");
     }
 
-    @Annotation
+    @Test
     public void testMethod4() {
-        System.out.println("Executing Test Method 4");
+        logger.info("Executing Test Method 4");
     }
 
     @BeforeSuite
     public void beforeSuiteMethod() {
-        System.out.println("Executing Before Suite Method");
+        logger.info("Executing Before Suite Method");
     }
 
     @AfterSuite
     public void afterSuiteMethod() {
-        System.out.println("Executing After Suite Method");
+        logger.info("Executing After Suite Method");
     }
 }
-
