@@ -3,12 +3,15 @@ package hilell.hw;
 import java.io.IOException;
 import java.nio.file.*;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FileManager {
+    private static final Logger logger = Logger.getLogger(FileManager.class.getName());
     private static Path currentDirectory;
 
     public static void main(String[] args) {
-        currentDirectory = Paths.get("C:\\work\\Java_Pro");
+        currentDirectory = Paths.get("user.home");
 
         while (true) {
             String command = getUserInput();
@@ -42,14 +45,14 @@ public class FileManager {
                 if (parts.length > 1) {
                     changeDirectory(parts[1]);
                 } else {
-                    System.out.println("Usage: cd <directory>");
+                    logger.log(Level.INFO, "Usage: cd <directory>");
                 }
                 break;
             case "cp":
                 if (parts.length > 2) {
                     copyFile(parts[1], parts[2]);
                 } else {
-                    System.out.println("Usage: cp <source> <destination>");
+                    logger.log(Level.INFO, "Usage: cp <source> <destination>");
                 }
                 break;
             case "ls":
@@ -59,7 +62,7 @@ public class FileManager {
                 printWorkingDirectory();
                 break;
             default:
-                System.out.println("Unknown command: " + parts[0]);
+                logger.log(Level.INFO, "Unknown command: " + parts[0]);
                 break;
         }
     }
@@ -76,7 +79,7 @@ public class FileManager {
         if (Files.isDirectory(newDirectory)) {
             currentDirectory = newDirectory;
         } else {
-            System.out.println("Directory not found: " + directory);
+            logger.log(Level.INFO, "Directory not found: " + directory);
         }
     }
 
@@ -86,23 +89,23 @@ public class FileManager {
 
         try {
             Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("File copied successfully");
+            logger.log(Level.INFO, "File copied successfully");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Error copying file", e);
         }
     }
 
     private static void listFiles() {
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(currentDirectory)) {
             for (Path file : stream) {
-                System.out.println(file.getFileName());
+                logger.log(Level.INFO, file.getFileName().toString());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Error listing files", e);
         }
     }
 
     private static void printWorkingDirectory() {
-        System.out.println(currentDirectory.toAbsolutePath());
+        logger.log(Level.INFO, currentDirectory.toAbsolutePath().toString());
     }
 }
